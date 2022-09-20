@@ -1,9 +1,10 @@
 body {
     background-color: rgb(27, 27, 76);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 .mainContainer {
-    background-color: grey;
+    background-color: black;
     height: 500px;
     width: 400px;
     border: 10px solid;
@@ -11,14 +12,21 @@ body {
     margin: 150px auto;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    border-radius: 10px;
 }
 
 .display {
-    background-color: red;
+    background-color: grey;
     flex: 1;
     max-height: 100px;
     font-size: 80px;
     text-align: end;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    padding-right: 10px;
 }
 
 .numbers {
@@ -32,11 +40,41 @@ body {
 .numbers > div {
     min-width: 78px;
     min-height: 78px;
-    background-color: blueviolet;
     flex: 1; 
-    /* margin: 2px; */
+    line-height: 70px;
+    border-radius: 6px;
 }
 
-.lastElements > div {
-    background-color: aquamarine;
+.equals,
+.decimal {
+    max-width: 97.75px;
+}
+
+.reset,
+.positiveOrNegative,
+.percentage {
+    background-color: #3D5A80;
+}
+
+.division,
+.multiply,
+.subtract,
+.add,
+.equals {
+    background-color: #E69C31;
+}
+
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.zero,
+.decimal {
+    background-color: #1B1B4C;
+    /* line-height: 60px; */
 }
