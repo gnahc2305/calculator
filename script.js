@@ -20,6 +20,9 @@ const decimal_div = document.querySelector('.decimal');
 const equals_div = document.querySelector('.equals');
 
 
+
+
+
 function add(a, b) {
     return a + b;
 }
@@ -53,4 +56,32 @@ function operate(operator, a, b) {
     }
 }
 
-// console.log(operate('/', 10, 2));
+let currentValue = '0';
+let maxDisplaydInteger = 9;
+
+// seven_div.addEventListener('click', () => {
+//     if (currentValue.length < maxDisplaydInteger) {
+//         if (currentValue === '0') {
+//             currentValue = '7';    
+//         } else {
+//             currentValue = currentValue + '7';
+//         }
+//         display_div.textContent = currentValue;
+//     }
+// })
+
+function displayValue(value) {
+    if (currentValue.length < maxDisplaydInteger) {
+        if (currentValue === '0') {
+            currentValue = value;
+        } else {
+            currentValue = currentValue + value;
+        }
+        display_div.textContent = currentValue;
+    }
+}
+
+reset_div.addEventListener('click', () => {
+    currentValue = '0';
+    display_div.textContent = currentValue;
+})
