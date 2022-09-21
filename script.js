@@ -83,9 +83,10 @@ function decimalPoint() {
     display_div.textContent = currentValue;
 }
 
-
+// adds or removes a minus sign infront of the current value
 function changeSign() {
-    if (currentValue.includes('-') === false) {
+    if (currentValue === '0') {
+    } else if (currentValue.includes('-') === false) {
         currentValue = '-' + currentValue;
     } else if (currentValue.includes('-')) {
         currentValue = currentValue.replace('-', '');
