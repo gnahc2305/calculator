@@ -36,6 +36,7 @@ function divide(a, b) {
     return a / b;
 }
 
+//function that takes the operator and two numbers, returns the result
 function operate(operator, a, b) {
     switch (operator) {
         case '+':
@@ -56,7 +57,7 @@ function operate(operator, a, b) {
 let currentValue = '0';
 let maxDisplaydInteger = 9;
 
-
+//displays the value of the number in the display
 function displayValue(value) {
     if (currentValue.length < maxDisplaydInteger) {
         if (currentValue === '0') {
@@ -68,14 +69,26 @@ function displayValue(value) {
     }
 }
 
+//adds a AC button that sets the display value to 0
 reset_div.addEventListener('click', () => {
     currentValue = '0';
     display_div.textContent = currentValue;
 })
 
+//makes the decimal point work only once
 function decimalPoint() {
     if (currentValue.includes('.') === false) {
         currentValue = currentValue + '.';
+    }
+    display_div.textContent = currentValue;
+}
+
+
+function changeSign() {
+    if (currentValue.includes('-') === false) {
+        currentValue = '-' + currentValue;
+    } else if (currentValue.includes('-')) {
+        currentValue = currentValue.replace('-', '');
     }
     display_div.textContent = currentValue;
 }
