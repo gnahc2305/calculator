@@ -56,6 +56,9 @@ function operate(operator, a, b) {
 
 let currentValue = '0';
 let maxDisplaydInteger = 9;
+let firstValue = '0';
+let lastValue = '0';
+let addition = false;
 
 //displays the value of the number in the display
 function displayValue(value) {
@@ -67,6 +70,7 @@ function displayValue(value) {
         }
         display_div.textContent = currentValue;
     }
+    add_div.style.background = '#E69C31';
 }
 
 //adds a AC button that sets the display value to 0
@@ -92,4 +96,24 @@ function changeSign() {
         currentValue = currentValue.replace('-', '');
     }
     display_div.textContent = currentValue;
+}
+
+add_div.addEventListener('click', () => {
+    add_div.style.background = '#754e18';
+    firstValue = currentValue;
+    displayLastValue(add_div);
+    addition = true;
+})
+
+equals_div.addEventListener('click', () => {
+    if (addition === true) {
+        lastValue = currentValue;
+        console.log(`The first Value is ${firstValue} and the last Value is ${lastValue}`);
+    }
+
+})
+
+function displayLastValue(div) {
+    display_div.textContent = firstValue;
+    currentValue = '0';
 }
