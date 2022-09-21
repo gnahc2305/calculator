@@ -108,7 +108,21 @@ add_div.addEventListener('click', () => {
 equals_div.addEventListener('click', () => {
     if (addition === true) {
         lastValue = currentValue;
-        console.log(`The first Value is ${firstValue} and the last Value is ${lastValue}`);
+        let firstValueInt = parseFloat(firstValue);
+        let lastValueInt = parseFloat(lastValue);
+        let finalValue = operate('+', firstValueInt, lastValueInt);
+
+        if (firstValue.includes('-')) {
+            firstValueInt = -Math.abs(firstValueInt);
+            finalValue = operate('+', firstValueInt, lastValueInt);
+            displayFinalValue(finalValue);
+        } else if (lastValue.includes('-')) {
+            firstValueInt = Math.abs(firstValueInt);
+            finalValue = operate('+', firstValueInt, lastValueInt);
+            displayFinalValue(finalValue);
+        } else {
+            displayFinalValue(finalValue);
+        }
     }
 
 })
@@ -116,4 +130,16 @@ equals_div.addEventListener('click', () => {
 function displayLastValue(div) {
     display_div.textContent = firstValue;
     currentValue = '0';
+}
+
+function displayFinalValue(value) {
+    if (currentValue.length < maxDisplaydInteger) {
+        if (currentValue === '0') {
+            currentValue = value;
+        } else {
+            currentValue = value;
+        }
+        display_div.textContent = currentValue;
+    }
+    add_div.style.background = '#E69C31';   
 }
