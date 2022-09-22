@@ -1,10 +1,11 @@
 let display = document.getElementById('display');
-
 let buttons = Array.from(document.querySelectorAll('button'));
 
 
 let displayValue = '0';
 let firstOperand = null;
+let secondOperand = null;
+let firstOperator = null;
 
 
 
@@ -26,6 +27,14 @@ buttons.map(button => {
                     display.textContent += e.target.innerText;
                 }
                 break;
+
+            case '+':
+                if (display.textContent === '0') return
+                document.querySelector('.add').style.background = '#754e18';
+                firstOperand = display.textContent;
+                console.log(firstOperand);
+
+                break;
                 
             default:
                 if (display.textContent.length <= 9) {
@@ -35,6 +44,12 @@ buttons.map(button => {
                         display.textContent += e.target.innerText;
                     }
                 }
+                document.querySelector('.add').style.background = '#E69C31';
+
         }
     });
 });
+
+function calculate(operator) {
+
+}
