@@ -136,7 +136,6 @@ function displayFinalValue(value) {
         }
         display_div.textContent = currentValue;
     }
-    add_div.style.background = '#E69C31';   
 }
 
 function calculate(typeOFOperator) {
@@ -148,13 +147,13 @@ function calculate(typeOFOperator) {
     if (firstValue.includes('-')) {
         firstValueInt = -Math.abs(firstValueInt);
         finalValue = operate(typeOFOperator, firstValueInt, lastValueInt);
-        displayFinalValue(finalValue);
+        displayFinalValue(finalValue.toString());
     } else if (lastValue.includes('-')) {
         firstValueInt = Math.abs(firstValueInt);
         finalValue = operate(typeOFOperator, firstValueInt, lastValueInt);
-        displayFinalValue(finalValue);
+        displayFinalValue(finalValue.toString());
     } else {
-        displayFinalValue(finalValue);
+        displayFinalValue(finalValue.toString());
     }
 }
 
@@ -177,4 +176,9 @@ multiply_div.addEventListener('click', () => {
 division_div.addEventListener('click', () => {
     setupTheListener(division_div);
     division = true;
+})
+
+percentage_div.addEventListener('click', () => {
+    result = parseFloat(currentValue) / 100;
+    displayFinalValue(result.toString());
 })
