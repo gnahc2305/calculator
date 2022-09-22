@@ -45,6 +45,7 @@ let addition = false;
 let subtraction = false;
 let multiplication = false;
 let division = false;
+// let currentOperator =
 
 //displays the value of the number in the display
 function displayValue(value) {
@@ -92,6 +93,7 @@ function changeSign() {
 equals_div.addEventListener('click', () => {
     if (addition) {
         calculate('+');
+        caca();
     } else if (subtraction) {
         calculate('-');
     } else if (multiplication) {
@@ -145,6 +147,7 @@ function calculate(typeOFOperator) {
 add_div.addEventListener('click', () => {
     setupTheListener(add_div);
     addition = true;
+    // if (firstValue )
 })
 
 subtract_div.addEventListener('click', () => {
@@ -166,3 +169,9 @@ percentage_div.addEventListener('click', () => {
     result = parseFloat(currentValue) / 100;
     displayFinalValue(result.toString());
 })
+
+function caca() {
+    console.log(firstValue);
+    console.log(lastValue);
+}
+
