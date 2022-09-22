@@ -13,7 +13,7 @@ const six_div = document.querySelector('.six');
 const subtract_div = document.querySelector('.subtract');
 const one_div = document.querySelector('.one');
 const two_div = document.querySelector('.two');
-const three_div = document.querySelector('.three');
+const three_div = document.querySelector('.three'); 
 const add_div = document.querySelector('.add');
 const zero_div = document.querySelector('.zero');
 const decimal_div = document.querySelector('.decimal');
@@ -107,22 +107,7 @@ add_div.addEventListener('click', () => {
 
 equals_div.addEventListener('click', () => {
     if (addition === true) {
-        lastValue = currentValue;
-        let firstValueInt = parseFloat(firstValue);
-        let lastValueInt = parseFloat(lastValue);
-        let finalValue = operate('+', firstValueInt, lastValueInt);
-
-        if (firstValue.includes('-')) {
-            firstValueInt = -Math.abs(firstValueInt);
-            finalValue = operate('+', firstValueInt, lastValueInt);
-            displayFinalValue(finalValue);
-        } else if (lastValue.includes('-')) {
-            firstValueInt = Math.abs(firstValueInt);
-            finalValue = operate('+', firstValueInt, lastValueInt);
-            displayFinalValue(finalValue);
-        } else {
-            displayFinalValue(finalValue);
-        }
+        calculate('+');
     }
 
 })
@@ -142,4 +127,23 @@ function displayFinalValue(value) {
         display_div.textContent = currentValue;
     }
     add_div.style.background = '#E69C31';   
+}
+
+function calculate(typeOFOperator) {
+    lastValue = currentValue;
+    let firstValueInt = parseFloat(firstValue);
+    let lastValueInt = parseFloat(lastValue);
+    let finalValue = operate(typeOFOperator, firstValueInt, lastValueInt);
+
+    if (firstValue.includes('-')) {
+        firstValueInt = -Math.abs(firstValueInt);
+        finalValue = operate(typeOFOperator, firstValueInt, lastValueInt);
+        displayFinalValue(finalValue);
+    } else if (lastValue.includes('-')) {
+        firstValueInt = Math.abs(firstValueInt);
+        finalValue = operate(typeOFOperator, firstValueInt, lastValueInt);
+        displayFinalValue(finalValue);
+    } else {
+        displayFinalValue(finalValue);
+    }
 }
