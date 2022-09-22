@@ -59,6 +59,9 @@ let maxDisplaydInteger = 9;
 let firstValue = '0';
 let lastValue = '0';
 let addition = false;
+let subtraction = false;
+let multiplication = false;
+let division = false;
 
 //displays the value of the number in the display
 function displayValue(value) {
@@ -71,6 +74,9 @@ function displayValue(value) {
         display_div.textContent = currentValue;
     }
     add_div.style.background = '#E69C31';
+    subtract_div.style.background = '#E69C31';
+    multiply_div.style.background = '#E69C31';
+    division_div.style.background = '#E69C31';
 }
 
 //adds a AC button that sets the display value to 0
@@ -90,6 +96,7 @@ function decimalPoint() {
 // adds or removes a minus sign infront of the current value
 function changeSign() {
     if (currentValue === '0') {
+        currentValue = '-';
     } else if (currentValue.includes('-') === false) {
         currentValue = '-' + currentValue;
     } else if (currentValue.includes('-')) {
@@ -99,17 +106,20 @@ function changeSign() {
 }
 
 add_div.addEventListener('click', () => {
-    add_div.style.background = '#754e18';
-    firstValue = currentValue;
-    displayLastValue(add_div);
+    setupTheListener(add_div);
     addition = true;
 })
 
 equals_div.addEventListener('click', () => {
-    if (addition === true) {
+    if (addition) {
         calculate('+');
+    } else if (subtraction) {
+        calculate('-');
+    } else if (multiplication) {
+        calculate('*');
+    } else if (division) {
+        calculate('/');
     }
-
 })
 
 function displayLastValue(div) {
@@ -147,3 +157,24 @@ function calculate(typeOFOperator) {
         displayFinalValue(finalValue);
     }
 }
+
+subtract_div.addEventListener('click', () => {
+    setupTheListener(subtract_div);
+    subtraction = true;
+})
+
+function setupTheListener(div) {
+    div.style.background = '#754e18';
+    firstValue = currentValue;
+    displayLastValue(div);
+}
+
+multiply_div.addEventListener('click', () => {
+    setupTheListener(multiply_div);
+    multiplication = true;
+})
+
+division_div.addEventListener('click', () => {
+    setupTheListener(division_div);
+    division = true;
+})
