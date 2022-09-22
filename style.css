@@ -33,11 +33,12 @@ footer {
     background-color: grey;
     flex: 1;
     max-height: 100px;
-    font-size: 80px;
+    font-size: 50px;
     text-align: end;
     border-radius: 3px;
     margin-bottom: 3px;
     padding-right: 10px;
+    line-height: 125px;
 }
 
 .numbers {
