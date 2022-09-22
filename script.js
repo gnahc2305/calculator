@@ -19,37 +19,20 @@ const zero_div = document.querySelector('.zero');
 const decimal_div = document.querySelector('.decimal');
 const equals_div = document.querySelector('.equals');
 
-
-function add(a, b) {
-    return a + b;
-}
-
-function substract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
-
 //function that takes the operator and two numbers, returns the result
 function operate(operator, a, b) {
     switch (operator) {
         case '+':
-            return add(a, b);
+            return a + b;
             break;
         case '-':
-            return substract(a, b);
+            return a - b;
             break;
         case '*':
-            return multiply(a, b);
+            return a * b;
             break;
         case '/':
-            return divide(a, b);
+            return a / b;
             break;
     }
 }
@@ -81,8 +64,9 @@ function displayValue(value) {
 
 //adds a AC button that sets the display value to 0
 reset_div.addEventListener('click', () => {
-    currentValue = '0';
-    display_div.textContent = currentValue;
+    location.reload();
+    // currentValue = '0';
+    // display_div.textContent = currentValue;
 })
 
 //makes the decimal point work only once
@@ -104,11 +88,6 @@ function changeSign() {
     }
     display_div.textContent = currentValue;
 }
-
-add_div.addEventListener('click', () => {
-    setupTheListener(add_div);
-    addition = true;
-})
 
 equals_div.addEventListener('click', () => {
     if (addition) {
@@ -138,6 +117,12 @@ function displayFinalValue(value) {
     }
 }
 
+function setupTheListener(div) {
+    div.style.background = '#754e18';
+    firstValue = currentValue;
+    displayLastValue(div);
+}
+
 function calculate(typeOFOperator) {
     lastValue = currentValue;
     let firstValueInt = parseFloat(firstValue);
@@ -157,16 +142,15 @@ function calculate(typeOFOperator) {
     }
 }
 
+add_div.addEventListener('click', () => {
+    setupTheListener(add_div);
+    addition = true;
+})
+
 subtract_div.addEventListener('click', () => {
     setupTheListener(subtract_div);
     subtraction = true;
 })
-
-function setupTheListener(div) {
-    div.style.background = '#754e18';
-    firstValue = currentValue;
-    displayLastValue(div);
-}
 
 multiply_div.addEventListener('click', () => {
     setupTheListener(multiply_div);
