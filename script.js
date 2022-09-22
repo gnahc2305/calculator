@@ -65,8 +65,6 @@ function displayValue(value) {
 //adds a AC button that sets the display value to 0
 reset_div.addEventListener('click', () => {
     location.reload();
-    // currentValue = '0';
-    // display_div.textContent = currentValue;
 })
 
 //makes the decimal point work only once
@@ -91,20 +89,16 @@ function changeSign() {
 
 equals_div.addEventListener('click', () => {
     if (addition) {
-        calculate('+');
+        calculate('+', addition);
     } else if (subtraction) {
-        calculate('-');
+        calculate('-', subtraction);
     } else if (multiplication) {
-        calculate('*');
+        calculate('*', multiplication);
     } else if (division) {
-        calculate('/');
+        calculate('/', division);
     }
 })
 
-function displayLastValue(div) {
-    display_div.textContent = firstValue;
-    currentValue = '0';
-}
 
 function displayFinalValue(value) {
     if (currentValue.length < maxDisplaydInteger) {
@@ -120,10 +114,11 @@ function displayFinalValue(value) {
 function setupTheListener(div) {
     div.style.background = '#754e18';
     firstValue = currentValue;
-    displayLastValue(div);
+    display_div.textContent = firstValue;
+    currentValue = '0';
 }
 
-function calculate(typeOFOperator) {
+function calculate(typeOFOperator, booleanOfOperator) {
     lastValue = currentValue;
     let firstValueInt = parseFloat(firstValue);
     let lastValueInt = parseFloat(lastValue);
@@ -133,19 +128,29 @@ function calculate(typeOFOperator) {
         firstValueInt = -Math.abs(firstValueInt);
         finalValue = operate(typeOFOperator, firstValueInt, lastValueInt);
         displayFinalValue(finalValue.toString());
+        booleanOfOperator = false;
     } else if (lastValue.includes('-')) {
         firstValueInt = Math.abs(firstValueInt);
         finalValue = operate(typeOFOperator, firstValueInt, lastValueInt);
         displayFinalValue(finalValue.toString());
+        booleanOfOperator = false;
     } else {
         displayFinalValue(finalValue.toString());
+        booleanOfOperator = false;
     }
 }
 
 add_div.addEventListener('click', () => {
     setupTheListener(add_div);
     addition = true;
+    newCalculation('+');
 })
+
+function newCalculation(typeOFOperator) {
+    lastValue = currentValue;
+    let firstValueInt = parseFloat(firstValue);
+    console.log(firstValueInt + firstValueInt);
+}
 
 subtract_div.addEventListener('click', () => {
     setupTheListener(subtract_div);
